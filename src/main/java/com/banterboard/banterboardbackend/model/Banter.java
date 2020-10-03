@@ -1,12 +1,14 @@
 package com.banterboard.banterboardbackend.model;
 
 import java.time.Instant;
+import java.util.Map;
 
 public class Banter {
     private String id;
     private Instant timeInstant;
     private String context;
     private String story;
+    private Map<String, LikeInfo> userIdToLikeInfoMap;
 
     public String getId() {
         return id;
@@ -40,4 +42,11 @@ public class Banter {
         this.story = story;
     }
 
+    public Map<String, LikeInfo> getUserIdToLikeInfoMap() {
+        return userIdToLikeInfoMap;
+    }
+
+    public void setUserIdToLikeInfoMap(Map<String, LikeInfo> userIdToLikeInfoMap) {
+        this.userIdToLikeInfoMap = userIdToLikeInfoMap;
+    }
 }
