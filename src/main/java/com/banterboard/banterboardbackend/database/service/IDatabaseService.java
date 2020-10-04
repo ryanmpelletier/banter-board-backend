@@ -4,14 +4,33 @@ import com.banterboard.banterboardbackend.model.Banter;
 
 import java.util.List;
 
+/**
+ * Basic CRUD interface for working with Banters
+ */
 public interface IDatabaseService {
-    public List<Banter> getAllBanters();
 
-    public List<Banter> getTopNLikedBanters(int n);
+    /**
+     * Create
+     */
+    void createBanter(Banter banter);
 
-    public void likeBanter(String userId, String banterId);
+    /**
+     * Read
+     */
+    List<Banter> getAllBanters();
+    Banter getBanter(String id);
+    List<Banter> getTopNLikedBanters(int n);
 
-    public void deleteBanter(String userId, String banterId);
+    /**
+     * Update
+     */
+    void updateBanter(Banter banter);
+    void likeBanter(String userId, String banterId);
 
-    public void createBanter(Banter banter);
+    /**
+     * Delete
+     */
+    void deleteBanter(String banterId);
+
+
 }
