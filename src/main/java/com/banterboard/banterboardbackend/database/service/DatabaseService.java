@@ -31,12 +31,12 @@ public class DatabaseService implements IDatabaseService {
         List<Banter> allBanters = getAllBanters();
 
         // sort by count
-        allBanters.sort((a, b) -> {
-            int aLikeCount = a.getUserIdToLikeInfoMap().size();
-            int bLikeCount = b.getUserIdToLikeInfoMap().size();
-            // descending sort
-            return Integer.compare(bLikeCount, aLikeCount);
-        });
+//        allBanters.sort((a, b) -> {
+//            int aLikeCount = a.getUserIdToLikeInfoMap().size();
+//            int bLikeCount = b.getUserIdToLikeInfoMap().size();
+//            // descending sort
+//            return Integer.compare(bLikeCount, aLikeCount);
+//        });
 
         // get top N liked banters
         // TODO CTG could be a better way to do this
@@ -51,17 +51,17 @@ public class DatabaseService implements IDatabaseService {
 
     @Override
     public void likeBanter(String userId, String banterId) {
-        Banter foundBanter = getBanter(banterId);
-        if (foundBanter != null) {
-            Banter clonedBanter = new BanterBuilder().cloneBanter(foundBanter);
-            LikeInfo prevLikeInfo = clonedBanter.getUserIdToLikeInfoMap().get(userId);
-            if (prevLikeInfo == null) {
-                LikeInfo createdLikeInfo = new LikeInfoBuilder().createLikeInfo();
-                createdLikeInfo.setLikedBy(userId);
-                clonedBanter.getUserIdToLikeInfoMap().put(userId, createdLikeInfo);
-            }
-            banterDb.put(banterId, foundBanter);
-        }
+//        Banter foundBanter = getBanter(banterId);
+//        if (foundBanter != null) {
+//            Banter clonedBanter = new BanterBuilder().cloneBanter(foundBanter);
+//            LikeInfo prevLikeInfo = clonedBanter.getUserIdToLikeInfoMap().get(userId);
+//            if (prevLikeInfo == null) {
+//                LikeInfo createdLikeInfo = new LikeInfoBuilder().createLikeInfo();
+//                createdLikeInfo.setLikedBy(userId);
+//                clonedBanter.getUserIdToLikeInfoMap().put(userId, createdLikeInfo);
+//            }
+//            banterDb.put(banterId, foundBanter);
+//        }
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Banter {
     private Instant timeInstant;
     private String context;
     private String story;
-    private Map<String, LikeInfo> userIdToLikeInfoMap;
+//    private Map<String, LikeInfo> userIdToLikeInfoMap;
 
     public String getId() {
         return id;
@@ -41,12 +41,12 @@ public class Banter {
     public void setStory(String story) {
         this.story = story;
     }
-
-    public Map<String, LikeInfo> getUserIdToLikeInfoMap() {
-        return userIdToLikeInfoMap;
-    }
-
-    public void setUserIdToLikeInfoMap(Map<String, LikeInfo> userIdToLikeInfoMap) {
-        this.userIdToLikeInfoMap = userIdToLikeInfoMap;
-    }
+//
+//    public Map<String, LikeInfo> getUserIdToLikeInfoMap() {
+//        return userIdToLikeInfoMap;
+//    }
+//
+//    public void setUserIdToLikeInfoMap(Map<String, LikeInfo> userIdToLikeInfoMap) {
+//        this.userIdToLikeInfoMap = userIdToLikeInfoMap;
+//    }
 }
