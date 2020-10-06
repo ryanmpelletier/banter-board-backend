@@ -1,11 +1,10 @@
 package com.banterboard.banterboardbackend.model;
 
 import java.time.Instant;
-import java.util.Map;
 
 public class Banter {
     private String id;
-    private Instant timeInstant;
+    private Instant time;
     private String context;
     private String story;
 //    private Map<String, LikeInfo> userIdToLikeInfoMap;
@@ -18,12 +17,12 @@ public class Banter {
         this.id = id;
     }
 
-    public Instant getTimeInstant() {
-        return timeInstant;
+    public Instant getTime() {
+        return time;
     }
 
-    public void setTimeInstant(Instant timeInstant) {
-        this.timeInstant = timeInstant;
+    public void setTime(Instant time) {
+        this.time = time;
     }
 
     public String getContext() {

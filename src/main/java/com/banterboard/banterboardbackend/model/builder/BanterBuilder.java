@@ -14,7 +14,7 @@ public class BanterBuilder {
         banter.setId(UUID.randomUUID().toString());
         banter.setContext("");
         banter.setStory("");
-        banter.setTimeInstant(Instant.now());
+        banter.setTime(Instant.now());
         Map<String, LikeInfo> userIdToLikeInfoMap = new HashMap<>();
 //        banter.setUserIdToLikeInfoMap(userIdToLikeInfoMap);
         return banter;
@@ -25,7 +25,7 @@ public class BanterBuilder {
         cloned.setId(toBeCloned.getId());
         cloned.setContext(toBeCloned.getContext());
         cloned.setStory(toBeCloned.getStory());
-        cloned.setTimeInstant(toBeCloned.getTimeInstant());
+        cloned.setTime(toBeCloned.getTime());
         // shallow copy userIdToLikeInfoMap
 //        cloned.setUserIdToLikeInfoMap(toBeCloned.getUserIdToLikeInfoMap());
         return cloned;

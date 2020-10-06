@@ -6,3 +6,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface BanterRepository extends MongoRepository<Banter, String> {
 
 }
+
