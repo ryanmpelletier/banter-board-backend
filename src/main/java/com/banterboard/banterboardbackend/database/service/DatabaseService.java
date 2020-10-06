@@ -17,6 +17,16 @@ public class DatabaseService implements IDatabaseService {
     private Map<String, Banter> banterDb = new HashMap<String, Banter>();
 
     @Override
+    public void createBanter(Banter banter) {
+        banterDb.put(banter.getId(), banter);
+    }
+
+    @Override
+    public  Banter getBanter(String banterId) {
+        return banterDb.get(banterId);
+    }
+
+    @Override
     public List<Banter> getAllBanters() {
         BanterBuilder builder = new BanterBuilder();
         // create a deep copy of the database
@@ -50,6 +60,11 @@ public class DatabaseService implements IDatabaseService {
     }
 
     @Override
+    public void updateBanter(Banter banter) {
+        //to make the interface happy
+    }
+
+    @Override
     public void likeBanter(String userId, String banterId) {
 //        Banter foundBanter = getBanter(banterId);
 //        if (foundBanter != null) {
@@ -65,18 +80,7 @@ public class DatabaseService implements IDatabaseService {
     }
 
     @Override
-    public void deleteBanter(String userId, String banterId) {
+    public void deleteBanter(String banterId) {
         banterDb.remove(banterId);
     }
-
-    @Override
-    public void createBanter(Banter banter) {
-        banterDb.put(banter.getId(), banter);
-    }
-
-    private Banter getBanter(String banterId) {
-        return banterDb.get(banterId);
-    }
-
-
 }
