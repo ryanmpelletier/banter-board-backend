@@ -1,8 +1,11 @@
 package com.banterboard.banterboardbackend.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.time.Instant;
 
 public class Banter {
+    @Id
     private String id;
     private Instant time;
     private String context;
