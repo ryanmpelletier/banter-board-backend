@@ -64,16 +64,21 @@ public class BanterController {
 
 
     /**
-     *Example Curl:
+     * Example Curl:
      *
-     * curl -X PUT http://localhost:8080/banter-board/api/banter/93df3cf9-6c5b-44f2-ba26-6257efd98b2
+     curl -X PUT \
+     -H "Content-Type: application/json" \
+     --data '{"context":"Jason was talking about an ex.","story":"He said, first of all I totally deserve to have someone like this in my life"}' \
+     http://localhost:8080/banter-board/api/banter/3
      *
-     * @return
+     * @param banter
      */
-    @PutMapping("/{id}")
-    public void updateBanter(@RequestBody Banter banter){
-        //TODO not sure how this should work
-        banterRepository.save(banter);
+    @PutMapping(value = "/{id}", consumes = "application/json")
+    public void updateBanter(@PathVariable String id, @RequestBody Banter banter){
+        Banter banterToUpdate = getBanter(id);
+        banterToUpdate.setStory(banter.getStory());
+        banterToUpdate.setContext(banter.getContext());
+        banterRepository.save(banterToUpdate);
     }
 
 
