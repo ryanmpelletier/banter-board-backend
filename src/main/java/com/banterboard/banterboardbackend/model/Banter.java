@@ -3,6 +3,7 @@ package com.banterboard.banterboardbackend.model;
 import org.springframework.data.annotation.Id;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Banter {
@@ -11,7 +12,7 @@ public class Banter {
     private Instant time;
     private String context;
     private String story;
-    private Set<Reaction> reactions;
+    private Set<Reaction> reactions = new HashSet<>();
 
     public String getId() {
         return id;
