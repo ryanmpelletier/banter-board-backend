@@ -3,6 +3,7 @@ package com.banterboard.banterboardbackend.model;
 import org.springframework.data.annotation.Id;
 
 import java.time.Instant;
+import java.util.Set;
 
 public class Banter {
     @Id
@@ -10,7 +11,7 @@ public class Banter {
     private Instant time;
     private String context;
     private String story;
-//    private Map<String, LikeInfo> userIdToLikeInfoMap;
+    private Set<Reaction> reactions;
 
     public String getId() {
         return id;
@@ -43,12 +44,12 @@ public class Banter {
     public void setStory(String story) {
         this.story = story;
     }
-//
-//    public Map<String, LikeInfo> getUserIdToLikeInfoMap() {
-//        return userIdToLikeInfoMap;
-//    }
-//
-//    public void setUserIdToLikeInfoMap(Map<String, LikeInfo> userIdToLikeInfoMap) {
-//        this.userIdToLikeInfoMap = userIdToLikeInfoMap;
-//    }
+
+    public Set<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(Set<Reaction> reactions) {
+        this.reactions = reactions;
+    }
 }
