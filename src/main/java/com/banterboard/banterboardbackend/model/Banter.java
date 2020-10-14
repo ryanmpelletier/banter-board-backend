@@ -1,14 +1,18 @@
 package com.banterboard.banterboardbackend.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.time.Instant;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Banter {
+    @Id
     private String id;
-    private Instant timeInstant;
+    private Instant time;
     private String context;
     private String story;
-    private Map<String, LikeInfo> userIdToLikeInfoMap;
+    private Set<Reaction> reactions = new HashSet<>();
 
     public String getId() {
         return id;
@@ -18,12 +22,12 @@ public class Banter {
         this.id = id;
     }
 
-    public Instant getTimeInstant() {
-        return timeInstant;
+    public Instant getTime() {
+        return time;
     }
 
-    public void setTimeInstant(Instant timeInstant) {
-        this.timeInstant = timeInstant;
+    public void setTime(Instant time) {
+        this.time = time;
     }
 
     public String getContext() {
@@ -42,11 +46,11 @@ public class Banter {
         this.story = story;
     }
 
-    public Map<String, LikeInfo> getUserIdToLikeInfoMap() {
-        return userIdToLikeInfoMap;
+    public Set<Reaction> getReactions() {
+        return reactions;
     }
 
-    public void setUserIdToLikeInfoMap(Map<String, LikeInfo> userIdToLikeInfoMap) {
-        this.userIdToLikeInfoMap = userIdToLikeInfoMap;
+    public void setReactions(Set<Reaction> reactions) {
+        this.reactions = reactions;
     }
 }
