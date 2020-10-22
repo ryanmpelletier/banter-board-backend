@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mongo-container:
+    image: mongo:latest
+    container_name: "mongo-container"
+    ports:
+      - 27017:27017
+  banter-board-backend-docker:
+    image: banter-board-backend-docker:latest
+    container_name: banter-board-backend-docker-container
+    ports:
+      - 8080:8080
+    environment:
+      - MONGO_HOST=mongo-container
+    links:
+      - mongo-container
