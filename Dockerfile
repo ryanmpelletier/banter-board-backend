@@ -1,13 +1,10 @@
-# means to build our image upon java 13 image from Docker Hub
+# Means to build our image upon java 13 image from Docker Hub
 FROM openjdk:13
+# This be me
 MAINTAINER cgannaway
-# We define that a volume named /tmp should exist
-VOLUME /tmp
-# We add a file from the local file system, naming it “app.jar.” The renaming isn't necessary, just an option available
+# Add the spring boot jar file from the local file system and rename it to app.jar
 ADD build/libs/banter-board-backend-0.0.1-SNAPSHOT.jar app.jar
-# We state that we want to open port 8080 on the container
+# Open port 8080 on the container
 EXPOSE 8080
-## We run a command on the system to “touch” the file. This ensures a file modification date on the app.jar file
-#RUN sh -c 'touch /app.jar'
-# The ENTRYPOINT command is the “what to run to ‘start'” command — we run Java, setting our Spring Mongo property and a quick additional property to speed up the Tomcat startup time, and then point it at our jar
+# The ENTRYPOINT command is the “what to run to ‘start'” command
 ENTRYPOINT ["java","-jar","/app.jar"]
