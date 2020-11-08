@@ -1,14 +1,13 @@
 package com.banterboard.banterboardbackend.model;
+
 import org.springframework.data.annotation.Id;
 
-
-public class Reaction {
+public class Comment {
 	@Id
 	private String id;
 	private String userId;
 	private String banterId;
-	private EReactionType reactionType;
-	
+	private String comment;
 	public String getId() {
 		return id;
 	}
@@ -21,18 +20,17 @@ public class Reaction {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	
 	public String getBanterId() {
 		return banterId;
 	}
 	public void setBanterId(String banterId) {
 		this.banterId = banterId;
 	}
-	public EReactionType getReactionType() {
-		return reactionType;
+	public String getComment() {
+		return comment;
 	}
-	public void setReactionType(EReactionType reactionType) {
-		this.reactionType = reactionType;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 }

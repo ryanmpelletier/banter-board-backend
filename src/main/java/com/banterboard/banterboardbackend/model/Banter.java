@@ -1,10 +1,10 @@
 package com.banterboard.banterboardbackend.model;
 
-import org.springframework.data.annotation.Id;
-
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.data.annotation.Id;
 
 public class Banter {
     @Id
@@ -12,7 +12,8 @@ public class Banter {
     private Instant time;
     private String context;
     private String story;
-    private Set<Reaction> reactions = new HashSet<>();
+    private Set<Reaction> reactions = new HashSet<Reaction>();
+    private Set<Comment> comments = new HashSet<Comment>();
 
     public String getId() {
         return id;
@@ -53,4 +54,14 @@ public class Banter {
     public void setReactions(Set<Reaction> reactions) {
         this.reactions = reactions;
     }
+
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+    
+    
 }
