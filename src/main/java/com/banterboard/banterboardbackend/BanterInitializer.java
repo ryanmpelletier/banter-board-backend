@@ -1,8 +1,11 @@
 package com.banterboard.banterboardbackend;
 
+import com.banterboard.banterboardbackend.api.controller.BanterController;
 import com.banterboard.banterboardbackend.model.Banter;
 import com.banterboard.banterboardbackend.model.Reaction;
 import com.banterboard.banterboardbackend.repositories.BanterRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,10 +14,11 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Component
 public class BanterInitializer {
+
+    private static Logger logger = LoggerFactory.getLogger(BanterInitializer.class);
 
     @Value("${initialize-test-data}")
     Boolean initializeTestData;
@@ -24,6 +28,8 @@ public class BanterInitializer {
 
     public void initialize(){
 
+        logger.info("Initializing Banter-Board-Backend with test data.");
+        logger.debug("Removing all existing Banters.");
         banterRepository.deleteAll();
 
         Set<Reaction> banter1Reactions = new HashSet<>();
@@ -56,7 +62,7 @@ public class BanterInitializer {
         banter3.setStory("Ryan made a joke that was really dumb.");
         banter3.setTime(Instant.now().plusSeconds(3600 * 2));
 
-
+        logger.debug("Saving test data Banters");
         banterRepository.saveAll(Arrays.asList(
                 banter1,
                 banter2,

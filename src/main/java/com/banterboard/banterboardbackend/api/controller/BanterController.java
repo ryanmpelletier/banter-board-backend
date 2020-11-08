@@ -2,6 +2,8 @@ package com.banterboard.banterboardbackend.api.controller;
 
 import com.banterboard.banterboardbackend.model.Banter;
 import com.banterboard.banterboardbackend.repositories.BanterRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,9 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/banter")
 public class BanterController {
+
+    private static Logger logger = LoggerFactory.getLogger(BanterController.class);
+
 
     private BanterRepository banterRepository;
 
@@ -34,6 +39,9 @@ public class BanterController {
     public void createBanter(@RequestBody Banter banter) {
         banter.setId(UUID.randomUUID().toString());
         banter.setTime(Instant.now());
+
+        logger.info("Saved Banter with ID: {}, Context: {}, Story: {} at {}.", banter.getId(), banter.getContext(),
+                banter.getStory(), banter.getTime());
         banterRepository.save(banter);
     }
 
@@ -46,6 +54,7 @@ public class BanterController {
      */
     @GetMapping
     public List<Banter> getBanters() {
+        logger.info("Querying all Banters.");
         return banterRepository.findAll();
     }
 
@@ -59,6 +68,7 @@ public class BanterController {
      */
     @GetMapping(value = "/{id}", produces = "application/json")
     public Banter getBanter(@PathVariable String id){
+        logger.info("Retrieving Banter with ID: {}", id);
         return banterRepository.findById(id).get();
     }
 
@@ -75,7 +85,11 @@ public class BanterController {
      */
     @PutMapping(value = "/{id}", consumes = "application/json")
     public void updateBanter(@PathVariable String id, @RequestBody Banter banter){
+        logger.debug("Found Banter for ID: {}", id);
         Banter banterToUpdate = getBanter(id);
+        logger.info("Updating Banter for ID: {}. Previous context was: {}, new context is {}. Previous story was: {}, new story is {}",
+                banterToUpdate.getId(), banterToUpdate.getContext(), banter.getContext(), banterToUpdate.getStory(),
+                banter.getStory());
         banterToUpdate.setStory(banter.getStory());
         banterToUpdate.setContext(banter.getContext());
         banterRepository.save(banterToUpdate);
@@ -91,6 +105,7 @@ public class BanterController {
      */
     @DeleteMapping("/{id}")
     public void deleteBanter(@PathVariable String id){
+        logger.info("Deleting Banter for ID: {}", id);
         banterRepository.deleteById(id);
     }
 }
