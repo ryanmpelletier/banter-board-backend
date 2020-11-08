@@ -30,3 +30,9 @@ hs_err_pid*
 build
 out
 
+
+#eclipse
+.settings
+.project
+.classpath
+bin/
